@@ -1,50 +1,60 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './App.css';
+import { Home } from './components/Home';
+import { About } from './components/About';
+import { Footer } from './components/Footer';
+import { Portfolio } from './components/Portfolio';
+import { Nav } from './components/Nav';
+import Setting from './components/Setting';
+import { Title } from './components/Title';
 
-export default function App() {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">this is test</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+    this.state = {
+      isSettingOpen: false,
+    };
+
+    this.handleSettingButtonClick = this.handleSettingButtonClick.bind(this);
+  }
+
+  handleSettingButtonClick() {
+    this.setState((prevState) => ({
+      isSettingOpen: !prevState.isSettingOpen,
+    }));
+  }
+
+  render() {
+    return (
+      <Router>
+        <Title />
+        <div className="wrapper">
+          <Setting
+            isOpen={this.state.isSettingOpen}
+            handleClose={this.handleSettingButtonClick}
+          ></Setting>
+          <Nav
+            isOpen={this.state.isSettingOpen}
+            handleClose={this.handleSettingButtonClick}
+          />
+          <Switch>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/portfolio">
+              <Portfolio />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    );
+  }
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
+export default App;

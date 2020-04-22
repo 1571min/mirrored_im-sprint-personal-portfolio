@@ -1,38 +1,160 @@
-.App {
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+body {
+  font-family: Geneva,
+    Helvetica,
+    Arial,
+    serif;
+
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  color: gray;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #b29600;
+  text-decoration: underline;
+}
+
+.title {
+  color: #b29600;
   text-align: center;
+  font-size: 4.2em;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  word-spacing: .2em;
+  font-family: "Book Antiqua",
+    Georgia,
+    "times new roman",
+    serif;
+  font-size: 3.9;
+  font-weight: bold;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.content {
+  grid-area: content;
+  text-align: center;
+  height: 800px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.home {
+  margin-top: 100px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.about {
+  font-family: 'Jeju Gothic', sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: 25%;
+  width: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.header {
+  grid-area: header;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #EAEAEA;
+  border-bottom: 1px solid #EAEAEA;
+  font-family: "Book Antiqua",
+    Georgia,
+    "times new roman",
+    serif;
+}
+
+.footer {
+  grid-area: footer;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  background-color: #f8f8f8;
+}
+
+
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+}
+
+.box {
+  color: black;
+}
+
+.menu-list {
+  margin: 0 auto;
+}
+
+.menu-list .menu {
+  list-style-type: none;
+  float: left;
+  margin-left: 30px;
+  font-size: 20px;
+}
+
+
+.mdl {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  visibility: hidden;
+}
+
+.mdl.show {
+  visibility: visible;
+}
+
+.mdl-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.mdl .sidebar {
+  position: absolute;
+  background-color: #fff;
+  border-left: 1px solid #ccc;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 350px;
+  transform: translateX(350px);
+  padding: 20px;
+  transition: transform 0.3s;
+}
+
+.mdl.show .sidebar {
+  transform: translateX(0);
+}
+
+.small-margin-right {
+  margin-right: 5px;
 }
